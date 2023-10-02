@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-@OpenAPIDefinition(info = Info(title = "Desafio Mobi7", version = "1.0", description = "Employees Information"))
+@OpenAPIDefinition(info = Info(title = "Desafio Mobi7", version = "1.0", description = "Localiza/Mobi7"))
 @EntityScan
 class DesafioMobi7Application
 
