@@ -1,15 +1,16 @@
 package com.example.desafiomobi7.controller
 
-import com.example.desafiomobi7.dto.PosicoesVeiculoDTO
+import com.example.desafiomobi7.dto.VeiculoDTO
 import com.example.desafiomobi7.dto.TempoPontoDeInteresseDTO
 import com.example.desafiomobi7.dto.TempoPontoDeInteresseResponseDTO
 import com.example.desafiomobi7.dto.toEntity
 import com.example.desafiomobi7.model.Veiculo
 import com.example.desafiomobi7.service.VeiculoService
+import jakarta.validation.Valid
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
-import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
+import java.time.LocalDate
 
 @RestController
 @RequestMapping("/veiculos")
@@ -27,14 +28,14 @@ class VeiculoController() {
     @PostMapping("/posicoes")
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
-    fun cadastrarPosicaoVeiculo(@RequestBody @Validated posicoesVeiculoDTO: PosicoesVeiculoDTO): PosicoesVeiculoDTO {
-        val posicoesVeiculo = posicoesVeiculoDTO.toEntity()
-        return veiculoService.criarNovaPosicaoVeiculo(posicoesVeiculo)
+    fun cadastrarPosicaoVeiculo(@Valid @RequestBody veiculoDTO: VeiculoDTO): VeiculoDTO {
+        val veiculo = veiculoDTO.toEntity()
+        return veiculoService.criarNovaPosicaoVeiculo(veiculo)
     }
 
-    @PostMapping("/tempo")
+    @GetMapping("/tempo")
     @ResponseStatus(HttpStatus.OK)
-    fun listarTempoemPontoDeInteresse(@RequestBody tempoPontoDeInteresseDTO: TempoPontoDeInteresseDTO): List<TempoPontoDeInteresseResponseDTO> {
-        return veiculoService.listarTempoemPontoDeInteresse(tempoPontoDeInteresseDTO)
+    fun listarTempoemPontoDeInteresse(@RequestParam(value = "placa") placa: String?, @RequestParam(value = "data") data: LocalDate?): List<TempoPontoDeInteresseResponseDTO> {
+        return veiculoService.listarTempoemPontoDeInteresse(TempoPontoDeInteresseDTO(placa, data))
     }
 }

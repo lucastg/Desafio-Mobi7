@@ -12,6 +12,8 @@ FROM openjdk:17-jdk-alpine
 
 WORKDIR /app
 
+COPY csv/ /app/csv
+
 COPY --from=builder /app/target/*.jar app.jar
 
 EXPOSE 8080

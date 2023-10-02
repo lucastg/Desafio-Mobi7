@@ -1,6 +1,6 @@
 package com.example.desafiomobi7.model
 
-import com.example.desafiomobi7.dto.PosicoesVeiculoDTO
+import com.example.desafiomobi7.dto.VeiculoDTO
 import jakarta.persistence.*
 import java.time.LocalDateTime
 import java.util.*
@@ -14,29 +14,29 @@ data class Veiculo(
     @Column
     var id: UUID? = UUID.randomUUID(),
 
-    @Column
+    @Column(nullable = false)
     var placa: String = "",
 
-    @Column
+    @Column(nullable = false)
     var data: LocalDateTime,
 
-    @Column
+    @Column(nullable = false)
     var velocidade: Int = 0,
 
-    @Column
+    @Column(nullable = false)
     var longitude: Double = 0.0,
 
-    @Column
+    @Column(nullable = false)
     var latitude: Double = 0.0,
 
-    @Column
+    @Column(nullable = false)
     var veiculoLigado: Boolean = false,
 ) {
     constructor() : this(UUID.randomUUID(), "", LocalDateTime.now(), 0, 0.0, 0.0, false)
 }
 
-fun Veiculo.toDto(): PosicoesVeiculoDTO {
-    return PosicoesVeiculoDTO(
+fun Veiculo.toDto(): VeiculoDTO {
+    return VeiculoDTO(
         placa = this.placa,
         data = this.data,
         velocidade = this.velocidade,

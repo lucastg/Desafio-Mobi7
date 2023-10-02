@@ -12,16 +12,16 @@ data class PontoDeInteresse(
     @Column
     var id: UUID? = UUID.randomUUID(),
 
-    @Column
+    @Column(nullable = false)
     var nome: String = "",
 
-    @Column
+    @Column(nullable = false)
     var raio: Int = 0,
 
-    @Column
+    @Column(nullable = false)
     var latitude: Double = 0.0,
 
-    @Column
+    @Column(nullable = false)
     var longitude: Double = 0.0
 )
 

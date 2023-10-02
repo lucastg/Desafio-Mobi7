@@ -23,10 +23,10 @@ class ReadCSV() {
     lateinit var pontoDeInteresseRepository: PontoDeInteresseRepository
 
     val posicoesCSV =
-        "C:\\Users\\Lucas\\Downloads\\desafio-mobi7\\desafio-mobi7\\csv\\posicoes.csv"
+        "csv/posicoes.csv"
 
     val pontoDeInteresseCsv =
-        "C:\\Users\\Lucas\\Downloads\\desafio-mobi7\\desafio-mobi7\\csv\\base_pois_def.csv"
+        "csv/base_pois_def.csv"
 
     @Transactional
     fun principal() {
